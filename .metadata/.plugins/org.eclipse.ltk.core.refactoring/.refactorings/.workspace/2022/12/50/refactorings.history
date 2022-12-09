@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;PWM&apos; to &apos;Assignment_VXL&apos;" description="Rename resource &apos;PWM&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/PWM" name="Assignment_VXL" stamp="1670570832988" updateReferences="true"/>
+</session>
