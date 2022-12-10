@@ -9,11 +9,12 @@
 
 int status_col=0;
 int status_row=0;
+int flag_ped=1;
 
 //quan ly thoi gian cac den bang cac bien ben duoi
 int Time_Auto_Red =5000;
-int Time_Auto_Green =4000;
-int Time_Auto_Yellow = 1000;
+int Time_Auto_Green =2000;
+int Time_Auto_Yellow = 3000;
 
 
 void set_Time_Auto_Red(int duration){

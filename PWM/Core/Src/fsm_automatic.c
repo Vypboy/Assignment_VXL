@@ -3,6 +3,13 @@
 #include "fsm_automatic.h"
 #include "main.h"
 
+void press_ped_lag(){
+	flag_ped=1;
+}
+void reset_ped_led(){
+	flag_ped=0;
+	Display_P_Led_Reset();
+}
 
 
 void fsm_automatic_run(){
@@ -28,8 +35,7 @@ void fsm_automatic_run(){
 				setTimer1(MODE_TIME);
 			}
 			if(isButtonPressed(3)==1){
-				setTimer1(Time_Auto_Red);
-				status_col=PEDESTRIAN_MODE;
+				press_ped_lag();
 			}
 			break;
 		case AUTO_GREEN:
@@ -45,8 +51,7 @@ void fsm_automatic_run(){
 				setTimer1(MODE_TIME);
 			}
 			if(isButtonPressed(3)==1){
-				setTimer1(Time_Auto_Red);
-				status_col=PEDESTRIAN_MODE;
+				press_ped_lag();
 			}
 			break;
 		case AUTO_YELLOW:
@@ -63,19 +68,18 @@ void fsm_automatic_run(){
 				setTimer1(MODE_TIME);
 			}
 			if(isButtonPressed(3)==1){
-				setTimer1(Time_Auto_Red);
-				status_col=PEDESTRIAN_MODE;
+				press_ped_lag();
 			}
 			break;
-		case PEDESTRIAN_MODE:
-			Buzzer();
-			if(timer1_flag==1){
-				if(timer1_flag==1){
-					status_col=INIT;
-					status_row=INIT;
-				}
-			}
-			break;
+//		case PEDESTRIAN_MODE:
+//			Buzzer();
+//			if(timer1_flag==1){
+//				if(timer1_flag==1){
+//					status_col=INIT;
+//					status_row=INIT;
+//				}
+//			}
+//			break;
 		default:
 			break;
 	}
@@ -90,6 +94,8 @@ void fsm_automatic_run(){
 			setTimer4(Time_Auto_Green);
 			break;
 		case AUTO_RED:
+			if(flag_ped==1) Display_P_Led_Red1();
+
 			Display_Led_Red2();
 
 			//chuyen trang thai co dk
@@ -99,17 +105,24 @@ void fsm_automatic_run(){
 			}
 			break;
 		case AUTO_GREEN:
+			if(flag_ped==1) {
+				Display_P_Led_Green1();
+				////////thuc hien buzzer
+				//todo
+				Buzzer();
+			}
 			Display_Led_Green2();
 
 			//chuyen trang thai co dk
 			if(timer4_flag==1){
+				reset_ped_led();//tat den cho nguoi di duong
 				status_row=AUTO_YELLOW;
 				setTimer4(Time_Auto_Yellow);
 			}
 			break;
 		case AUTO_YELLOW:
 			Display_Led_Yellow2();
-
+			if(flag_ped==1) Display_P_Led_Red1();
 			//chuyen trang thai c o dk
 			if(timer4_flag==1){
 				status_row=AUTO_RED;
@@ -119,5 +132,8 @@ void fsm_automatic_run(){
 		default:
 			break;
 	}
+	///////////////////////////////////////////////////////////////////
+
+
 }
 

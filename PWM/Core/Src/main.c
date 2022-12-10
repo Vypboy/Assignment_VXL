@@ -63,12 +63,7 @@ static void MX_TIM2_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 void Buzzer(){
-
-	  __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,100);
-	  HAL_Delay(1000);
-	  __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,1);
-	  HAL_Delay(1000);
-
+	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,100);
 }
 /* USER CODE END 0 */
 
@@ -290,7 +285,8 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, P_LED1_Pin|LED2_Pin|LED4_Pin|LED3_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, P_LED1_Pin|LED2_Pin|LED4_Pin|LED3_Pin
+                          |pled1_Pin|pled2_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, P_LED2_Pin|LED1_Pin, GPIO_PIN_RESET);
@@ -307,8 +303,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(Button3_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : P_LED1_Pin LED2_Pin LED4_Pin LED3_Pin */
-  GPIO_InitStruct.Pin = P_LED1_Pin|LED2_Pin|LED4_Pin|LED3_Pin;
+  /*Configure GPIO pins : P_LED1_Pin LED2_Pin LED4_Pin LED3_Pin
+                           pled1_Pin pled2_Pin */
+  GPIO_InitStruct.Pin = P_LED1_Pin|LED2_Pin|LED4_Pin|LED3_Pin
+                          |pled1_Pin|pled2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

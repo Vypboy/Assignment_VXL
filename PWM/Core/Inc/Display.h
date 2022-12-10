@@ -16,16 +16,10 @@ void Display_Led_Red2();
 void Display_Led_Green2();
 void Display_Led_Yellow2();
 
+void Display_P_Led_Reset();
 void Display_P_Led_Red1();
 void Display_P_Led_Green1();
 
-//=========================
-//	FOR 7SEG_DISPLAY
-//=========================
-extern int led_buffer[4];
 
-void display7SEG(int num);
-void updateClockBuffer();
-void Run_7SEG();
 
 #endif /* INC_DISPLAY_H_ */

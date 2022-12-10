@@ -6,5 +6,6 @@ Display.c:56:6:Display_Led_Yellow1	8	static
 Display.c:61:6:Display_Led_Red2	8	static
 Display.c:65:6:Display_Led_Green2	8	static
 Display.c:69:6:Display_Led_Yellow2	8	static
-Display.c:73:6:Display_P_Led_Red1	8	static
-Display.c:77:6:Display_P_Led_Green1	8	static
+Display.c:83:6:Display_P_Led_Reset	8	static
+Display.c:87:6:Display_P_Led_Red1	8	static
+Display.c:91:6:Display_P_Led_Green1	8	static

@@ -42,7 +42,7 @@ extern "C" {
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
-
+void Buzzer();
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/
@@ -82,6 +82,10 @@ void Error_Handler(void);
 #define LED4_GPIO_Port GPIOB
 #define LED3_Pin GPIO_PIN_5
 #define LED3_GPIO_Port GPIOB
+#define pled1_Pin GPIO_PIN_8
+#define pled1_GPIO_Port GPIOB
+#define pled2_Pin GPIO_PIN_9
+#define pled2_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

@@ -20,6 +20,7 @@
 #define MAN_RED	 	12
 #define MAN_GREEN	13
 #define MAN_YELLOW 	14
+
 #define PEDESTRIAN_MODE 15
 
 //thoi gian trang thai mode
@@ -27,6 +28,7 @@
 
 extern int status_col;
 extern int status_row;
+extern int flag_ped;
 
 extern int Time_Auto_Red;
 extern int Time_Auto_Green;
