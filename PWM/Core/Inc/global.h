@@ -34,6 +34,9 @@ extern int Time_Auto_Red;
 extern int Time_Auto_Green;
 extern int Time_Auto_Yellow;
 
+extern int time_value;
+void set_time_value(int duration);
+
 void set_Time_Auto_Red(int duration);
 void set_Time_Auto_Green(int duration);
 void set_Time_Auto_Yellow(int duration);

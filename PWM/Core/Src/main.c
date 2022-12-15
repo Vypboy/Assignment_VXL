@@ -27,6 +27,7 @@
 #include "fsm_automatic.h"
 #include "fsm_manual.h"
 #include "Display.h"
+#include "global.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -62,9 +63,45 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-void Buzzer(){
-	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,100);
+#define MAX_BUFFER_SIZE 30
+uint8_t temp = 0;
+uint8_t buffer[MAX_BUFFER_SIZE];
+uint8_t index_buffer = 0;
+uint8_t buffer_flag = 0;
+
+
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
+	if(huart->Instance == USART2){
+
+		HAL_UART_Transmit(&huart2, &temp, 1, 50);
+		buffer[index_buffer++] = temp;
+		if(index_buffer == 30) index_buffer = 0;
+
+		buffer_flag = 1;
+		HAL_UART_Receive_IT(&huart2, &temp, 1);
+	}
 }
+
+
+int x=0;
+//void Buzzer(){
+//	if(timer2_flag==1){
+//		setTimer2(1000);
+//		x+=50;
+//		if(x==550) _HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,0);
+//		__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,x);
+//	}
+//}
+
+//set_time_value(Time_Auto_Red);
+//
+//void Uart_Run(){
+//	if(timer5_flag==1){
+//		setTimer5(1000);
+//		HAL_UART_Transmit(&huart2, (void *)str, sprintf(str,"%d\r\n",time_value), 1000);
+//	}
+//
+//}
 /* USER CODE END 0 */
 
 /**
@@ -100,6 +137,8 @@ int main(void)
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   HAL_TIM_Base_Start_IT(&htim2);
+  HAL_UART_Receive_IT (&huart2 , &temp , 1) ;
+  HAL_ADC_Start(&hadc1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -111,6 +150,8 @@ int main(void)
   setTimer2(10);
   setTimer3(10);
   setTimer5(10);
+
+  char str[20];
   while (1)
   {
 //	  Run_7SEG();
@@ -121,12 +162,25 @@ int main(void)
 //	  HAL_Delay(1000);
 //	  __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,100);
 //	  HAL_Delay(1000);
+	  if(timer2_flag==1){
+		setTimer2(1000);
+		x+=50;
+		if(x==550) _HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,0);
+		__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,x);
+	}
+	if(timer5_flag==1){
+		setTimer5(1000);
+		HAL_UART_Transmit(&huart2, (void *)str, sprintf(str,"%d\r\n",time_value), 1000);
+	}
 
 
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }
+
+
+
   /* USER CODE END 3 */
 }
 
@@ -327,6 +381,16 @@ void HAL_TIM_PeriodElapsedCallback (TIM_HandleTypeDef * htim)
 	timerRun();
 	getKeyInput();
 }
+
+
+
+//void Uart_Run(){
+//	if(timer5_flag==1){
+//		setTimer5(1000);
+//		HAL_UART_Transmit(&huart2, (void *)str, sprintf(str,"%d\r\n",time_value), 1000);
+//	}
+//
+//}
 /* USER CODE END 4 */
 
 /**

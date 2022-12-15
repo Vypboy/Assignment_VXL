@@ -3,6 +3,8 @@
 #include "fsm_automatic.h"
 #include "main.h"
 
+
+
 void press_ped_lag(){
 	flag_ped=1;
 }

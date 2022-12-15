@@ -26,3 +26,9 @@ void set_Time_Auto_Green(int duration){
 void set_Time_Auto_Yellow(int duration){
 	Time_Auto_Yellow = duration;
 }
+
+
+int time_value=0;
+void set_time_value(int duration){
+	time_value=duration;
+}
