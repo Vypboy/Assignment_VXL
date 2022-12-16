@@ -25,6 +25,9 @@ void fsm_automatic_run(){
 			break;
 		case AUTO_RED:
 			Display_Led_Red1();
+			//dat gia tri bien dem time_value de hien thi tren terminal
+			set_time_value(Time_Auto_Red);
+
 			//chuyen trang thai co dk
 			if(timer1_flag==1){
 				status_col=AUTO_GREEN;
@@ -42,6 +45,8 @@ void fsm_automatic_run(){
 			break;
 		case AUTO_GREEN:
 			Display_Led_Green1();
+			//dat gia tri bien dem time_value de hien thi tren terminal
+			set_time_value(Time_Auto_Green);
 			//chuyen trang thai co dk
 			if(timer1_flag==1){
 				status_col=AUTO_YELLOW;
@@ -58,6 +63,8 @@ void fsm_automatic_run(){
 			break;
 		case AUTO_YELLOW:
 			Display_Led_Yellow1();
+			//dat gia tri bien dem time_value de hien thi tren terminal
+			set_time_value(Time_Auto_Yellow);
 			//chuyen trang thai co dk
 			if(timer1_flag==1){
 				status_col=AUTO_RED;

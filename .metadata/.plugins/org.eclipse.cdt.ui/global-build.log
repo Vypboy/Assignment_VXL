@@ -1,49 +1,20 @@
-22:47:03 **** Incremental Build of configuration Debug for project Assignment_VXL ****
+09:17:29 **** Incremental Build of configuration Debug for project Assignment_VXL ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c:73:30: error: unknown type name 'UART_HandleTypeDef'; did you mean 'TIM_HandleTypeDef'?
-   73 | void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
-      |                              ^~~~~~~~~~~~~~~~~~
-      |                              TIM_HandleTypeDef
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:140:3: warning: implicit declaration of function 'HAL_UART_Receive_IT' [-Wimplicit-function-declaration]
-  140 |   HAL_UART_Receive_IT (&huart2 , &temp , 1) ;
-      |   ^~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:140:25: error: 'huart2' undeclared (first use in this function)
-  140 |   HAL_UART_Receive_IT (&huart2 , &temp , 1) ;
-      |                         ^~~~~~
-../Core/Src/main.c:140:25: note: each undeclared identifier is reported only once for each function it appears in
-../Core/Src/main.c:141:3: warning: implicit declaration of function 'HAL_ADC_Start'; did you mean 'HAL_DMA_Start'? [-Wimplicit-function-declaration]
-  141 |   HAL_ADC_Start(&hadc1);
-      |   ^~~~~~~~~~~~~
-      |   HAL_DMA_Start
-../Core/Src/main.c:141:18: error: 'hadc1' undeclared (first use in this function)
-  141 |   HAL_ADC_Start(&hadc1);
-      |                  ^~~~~
-../Core/Src/main.c:168:14: warning: implicit declaration of function '_HAL_TIM_SetCompare' [-Wimplicit-function-declaration]
-  168 |   if(x==550) _HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,0);
-      |              ^~~~~~~~~~~~~~~~~~~
-../Core/Src/main.c:173:3: warning: implicit declaration of function 'HAL_UART_Transmit' [-Wimplicit-function-declaration]
-  173 |   HAL_UART_Transmit(&huart2, (void *)str, sprintf(str,"%d\r\n",time_value), 1000);
-      |   ^~~~~~~~~~~~~~~~~
-../Core/Src/main.c:173:43: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
-  173 |   HAL_UART_Transmit(&huart2, (void *)str, sprintf(str,"%d\r\n",time_value), 1000);
-      |                                           ^~~~~~~
-../Core/Src/main.c:173:43: warning: incompatible implicit declaration of built-in function 'sprintf'
-../Core/Src/main.c:31:1: note: include '<stdio.h>' or provide a declaration of 'sprintf'
-   30 | #include "global.h"
-  +++ |+#include <stdio.h>
-   31 | /* USER CODE END Includes */
-../Core/Src/main.c: In function 'Uart_Run':
-../Core/Src/main.c:390:22: error: 'huart2' undeclared (first use in this function)
-  390 |   HAL_UART_Transmit(&huart2, (void *)str, sprintf(str,"%d\r\n",time_value), 1000);
-      |                      ^~~~~~
-../Core/Src/main.c:390:38: error: 'str' undeclared (first use in this function)
-  390 |   HAL_UART_Transmit(&huart2, (void *)str, sprintf(str,"%d\r\n",time_value), 1000);
-      |                                      ^~~
-../Core/Src/main.c:390:43: warning: incompatible implicit declaration of built-in function 'sprintf'
-  390 |   HAL_UART_Transmit(&huart2, (void *)str, sprintf(str,"%d\r\n",time_value), 1000);
-      |                                           ^~~~~~~
-../Core/Src/main.c:390:43: note: include '<stdio.h>' or provide a declaration of 'sprintf'
-make: *** [Core/Src/subdir.mk:55: Core/Src/main.o] Error 1
-"make -j16 all" terminated with exit code 2. Build might be incomplete.
+arm-none-eabi-gcc -o "Assignment_VXL.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\Tai lieu BK\File TN\Vi xu ly\PWM\PWM\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assignment_VXL.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: Assignment_VXL.elf
+ 
+arm-none-eabi-size   Assignment_VXL.elf 
+arm-none-eabi-objdump -h -S  Assignment_VXL.elf  > "Assignment_VXL.list"
+arm-none-eabi-objcopy  -O ihex  Assignment_VXL.elf  "Assignment_VXL.hex"
+   text	   data	    bss	    dec	    hex	filename
+  17856	    136	   2000	  19992	   4e18	Assignment_VXL.elf
+arm-none-eabi-objcopy  -O binary  Assignment_VXL.elf  "Assignment_VXL.bin"
+Finished building: default.size.stdout
+ 
+Finished building: Assignment_VXL.hex
+ 
+Finished building: Assignment_VXL.list
+ 
+Finished building: Assignment_VXL.bin
+ 

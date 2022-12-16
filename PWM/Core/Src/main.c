@@ -28,6 +28,7 @@
 #include "fsm_manual.h"
 #include "Display.h"
 #include "global.h"
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -48,6 +49,8 @@
 TIM_HandleTypeDef htim2;
 TIM_HandleTypeDef htim3;
 
+UART_HandleTypeDef huart2;
+
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -57,6 +60,7 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_TIM3_Init(void);
 static void MX_TIM2_Init(void);
+static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -83,15 +87,15 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 }
 
 
-int x=0;
-//void Buzzer(){
+//int x=0;
+void Buzzer(){
 //	if(timer2_flag==1){
 //		setTimer2(1000);
 //		x+=50;
 //		if(x==550) _HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,0);
 //		__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,x);
 //	}
-//}
+}
 
 //set_time_value(Time_Auto_Red);
 //
@@ -134,11 +138,11 @@ int main(void)
   MX_GPIO_Init();
   MX_TIM3_Init();
   MX_TIM2_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
   HAL_TIM_Base_Start_IT(&htim2);
   HAL_UART_Receive_IT (&huart2 , &temp , 1) ;
-  HAL_ADC_Start(&hadc1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -152,9 +156,10 @@ int main(void)
   setTimer5(10);
 
   char str[20];
+  int speaker_intensity=0;
+//  set_time_value() duoc dat trong fsm_automatic
   while (1)
   {
-//	  Run_7SEG();
 	  fsm_automatic_run();
 	  fsm_manial_run();
 
@@ -164,12 +169,13 @@ int main(void)
 //	  HAL_Delay(1000);
 	  if(timer2_flag==1){
 		setTimer2(1000);
-		x+=50;
-		if(x==550) _HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,0);
-		__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,x);
+		speaker_intensity+=50;
+		if(speaker_intensity==550) __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,0);
+		__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,speaker_intensity);
 	}
-	if(timer5_flag==1){
-		setTimer5(1000);
+	if(timer3_flag==1){
+		setTimer3(1000);
+		time_value--;
 		HAL_UART_Transmit(&huart2, (void *)str, sprintf(str,"%d\r\n",time_value), 1000);
 	}
 
@@ -322,6 +328,39 @@ static void MX_TIM3_Init(void)
 
   /* USER CODE END TIM3_Init 2 */
   HAL_TIM_MspPostInit(&htim3);
+
+}
+
+/**
+  * @brief USART2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART2_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART2_Init 0 */
+
+  /* USER CODE END USART2_Init 0 */
+
+  /* USER CODE BEGIN USART2_Init 1 */
+
+  /* USER CODE END USART2_Init 1 */
+  huart2.Instance = USART2;
+  huart2.Init.BaudRate = 9600;
+  huart2.Init.WordLength = UART_WORDLENGTH_8B;
+  huart2.Init.StopBits = UART_STOPBITS_1;
+  huart2.Init.Parity = UART_PARITY_NONE;
+  huart2.Init.Mode = UART_MODE_TX_RX;
+  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART2_Init 2 */
+
+  /* USER CODE END USART2_Init 2 */
 
 }
 
