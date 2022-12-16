@@ -2,7 +2,7 @@
 #include "global.h"
 #include "fsm_automatic.h"
 #include "main.h"
-#include <stdio.h>
+
 
 
 void press_ped_lag(){
@@ -132,7 +132,7 @@ void fsm_automatic_run(){
 		case AUTO_YELLOW:
 			Display_Led_Yellow2();
 			if(flag_ped==1) Display_P_Led_Red1();
-			//chuyen trang thai co dk
+			//chuyen trang thai c o dk
 			if(timer4_flag==1){
 				status_row=AUTO_RED;
 				setTimer4(Time_Auto_Red);
