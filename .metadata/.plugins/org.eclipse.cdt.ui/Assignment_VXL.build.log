@@ -1,23 +1,23 @@
-09:17:29 **** Incremental Build of configuration Debug for project Assignment_VXL ****
-make -j16 all 
-arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
-arm-none-eabi-gcc -o "Assignment_VXL.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\Tai lieu BK\File TN\Vi xu ly\PWM\PWM\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assignment_VXL.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+13:07:07 **** Incremental Build of configuration Debug for project Assignment_VXL ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/fsm_automatic.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/fsm_automatic.d" -MT"Core/Src/fsm_automatic.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/fsm_automatic.o"
+arm-none-eabi-gcc -o "Assignment_VXL.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\University of Technology\Microcontroller - Microproccesor\Assignment3\Assignment_VXL\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assignment_VXL.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: Assignment_VXL.elf
  
 arm-none-eabi-size   Assignment_VXL.elf 
 arm-none-eabi-objdump -h -S  Assignment_VXL.elf  > "Assignment_VXL.list"
 arm-none-eabi-objcopy  -O ihex  Assignment_VXL.elf  "Assignment_VXL.hex"
    text	   data	    bss	    dec	    hex	filename
-  17856	    136	   2000	  19992	   4e18	Assignment_VXL.elf
+  19204	    136	   2008	  21348	   5364	Assignment_VXL.elf
 arm-none-eabi-objcopy  -O binary  Assignment_VXL.elf  "Assignment_VXL.bin"
 Finished building: default.size.stdout
  
 Finished building: Assignment_VXL.hex
+Finished building: Assignment_VXL.bin
+ 
  
 Finished building: Assignment_VXL.list
  
-Finished building: Assignment_VXL.bin
- 
 
-09:17:31 Build Finished. 0 errors, 0 warnings. (took 1s.773ms)
+13:07:08 Build Finished. 0 errors, 0 warnings. (took 1s.378ms)
 

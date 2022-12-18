@@ -1,0 +1,7 @@
+Software_timer.c:28:6:setTimerBuzzer	16	static
+Software_timer.c:33:6:setTimerCol	16	static
+Software_timer.c:38:6:setTimer2	16	static
+Software_timer.c:43:6:setTimerUart	16	static
+Software_timer.c:48:6:setTimerRow	16	static
+Software_timer.c:53:6:setTimer5	16	static
+Software_timer.c:58:6:timerRun	4	static
