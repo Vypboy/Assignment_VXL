@@ -1262,7 +1262,7 @@ void fsm_automatic_run(){
  80008fa:	2b01      	cmp	r3, #1
  80008fc:	d101      	bne.n	8000902 <fsm_automatic_run+0x1f6>
  80008fe:	f7ff fcf9 	bl	80002f4 <Display_P_Led_Red1>
-			//chuyen trang thai c o dk
+			//chuyen trang thai co dk
 			if(timer4_flag==1){
  8000902:	4b12      	ldr	r3, [pc, #72]	; (800094c <fsm_automatic_run+0x240>)
  8000904:	681b      	ldr	r3, [r3, #0]

@@ -28,7 +28,9 @@
 
 extern int status_col;
 extern int status_row;
-extern int flag_ped;
+extern int status_pad;
+extern int flag_pad;
+extern int cycle_pad;
 
 extern int Time_Auto_Red;
 extern int Time_Auto_Green;
@@ -40,4 +42,5 @@ void set_time_value(int duration);
 void set_Time_Auto_Red(int duration);
 void set_Time_Auto_Green(int duration);
 void set_Time_Auto_Yellow(int duration);
+void run_time_value();
 #endif /* INC_GLOBAL_H_ */

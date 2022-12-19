@@ -9,7 +9,10 @@
 #define INC_FSM_MANUAL_H_
 
 #include "global.h"
+#include "modification_mode.h"
+#include "Display.h"
+#include "global.h"
 
-void fsm_manial_run();
+void fsm_manual_run();
 
 #endif /* INC_FSM_MANUAL_H_ */

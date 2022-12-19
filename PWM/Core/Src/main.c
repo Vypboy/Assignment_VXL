@@ -87,25 +87,15 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 }
 
 
-//int x=0;
-void Buzzer(){
-//	if(timer2_flag==1){
-//		setTimer2(1000);
-//		x+=50;
-//		if(x==550) _HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,0);
-//		__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,x);
-//	}
+void Buzzer(int intensity){
+	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, intensity);
+//	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
 }
 
-//set_time_value(Time_Auto_Red);
-//
-//void Uart_Run(){
-//	if(timer5_flag==1){
-//		setTimer5(1000);
-//		HAL_UART_Transmit(&huart2, (void *)str, sprintf(str,"%d\r\n",time_value), 1000);
-//	}
-//
-//}
+void Buzzer_Off(){
+	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -147,36 +137,26 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  status_col=INIT;
-  status_row=INIT;
+  Init();
 
-  setTimer1(10);
+
   setTimer2(10);
-  setTimer3(10);
+  setTimer3(10);//for run_time_value
+  setTimerUart(10);
   setTimer5(10);
 
   char str[20];
-  int speaker_intensity=0;
+//  int speaker_intensity=0;
 //  set_time_value() duoc dat trong fsm_automatic
   while (1)
   {
 	  fsm_automatic_run();
-	  fsm_manial_run();
+	  fsm_manual_run();
 
-//	  __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,10);
-//	  HAL_Delay(1000);
-//	  __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,100);
-//	  HAL_Delay(1000);
-	  if(timer2_flag==1){
-		setTimer2(1000);
-		speaker_intensity+=50;
-		if(speaker_intensity==550) __HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,0);
-		__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1,speaker_intensity);
-	}
-	if(timer3_flag==1){
-		setTimer3(1000);
+	if(timerUart_flag==1){
+		setTimerUart(1000);
 		time_value--;
-		HAL_UART_Transmit(&huart2, (void *)str, sprintf(str,"%d\r\n",time_value), 1000);
+		HAL_UART_Transmit(&huart2, (void *)str, sprintf(str,"!7SEG:%2d\n",time_value), 1000);
 	}
 
 

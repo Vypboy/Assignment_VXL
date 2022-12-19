@@ -8,6 +8,10 @@
 #ifndef INC_MODIFICATION_MODE_H_
 #define INC_MODIFICATION_MODE_H_
 
+#include "global.h"
+#include "button.h"
+#include "Display.h"
+
 void modification_mode();
 
 #endif /* INC_MODIFICATION_MODE_H_ */

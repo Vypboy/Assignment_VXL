@@ -7,8 +7,8 @@
 #include "Software_timer.h"
 #define TICK 10
 
-int timer1_counter = 0;
-int timer1_flag = 0;
+int timerCol_counter = 0;
+int timerCol_flag = 0;
 
 int timer2_counter = 0;
 int timer2_flag = 0;
@@ -16,15 +16,27 @@ int timer2_flag = 0;
 int timer3_counter = 0;
 int timer3_flag = 0;
 
-int timer4_counter = 0;
-int timer4_flag = 0;
+
+int timerUart_counter = 0;
+int timerUart_flag = 0;
+
+int timerRow_counter = 0;
+int timerRow_flag = 0;
 
 int timer5_counter = 0;
 int timer5_flag = 0;
 
-void setTimer1(int duration){
-	timer1_counter = duration/TICK;
-	timer1_flag = 0;
+int timerBuzzer_counter = 0;
+int timerBuzzer_flag = 0;
+
+void setTimerBuzzer(int duration){
+	timerBuzzer_counter = duration/TICK;
+	timerBuzzer_flag = 0;
+}
+
+void setTimerCol(int duration){
+	timerCol_counter = duration/TICK;
+	timerCol_flag = 0;
 }
 
 void setTimer2(int duration){
@@ -37,9 +49,14 @@ void setTimer3(int duration){
 	timer3_flag = 0;
 }
 
-void setTimer4(int duration){
-	timer4_counter = duration/TICK;
-	timer4_flag = 0;
+void setTimerUart(int duration){
+	timerUart_counter = duration/TICK;
+	timerUart_flag = 0;
+}
+
+void setTimerRow(int duration){
+	timerRow_counter = duration/TICK;
+	timerRow_flag = 0;
 }
 
 void setTimer5(int duration){
@@ -47,11 +64,13 @@ void setTimer5(int duration){
 	timer5_flag = 0;
 }
 
+
+
 void timerRun(){
-	if(timer1_counter > 0){
-		timer1_counter--;
-		if(timer1_counter == 0){
-			timer1_flag = 1;
+	if(timerCol_counter > 0){
+		timerCol_counter--;
+		if(timerCol_counter == 0){
+			timerCol_flag = 1;
 		}
 	}
 	if(timer2_counter > 0){
@@ -66,16 +85,28 @@ void timerRun(){
 			timer3_flag = 1;
 		}
 	}
-	if(timer4_counter > 0){
-		timer4_counter--;
-		if(timer4_counter == 0){
-			timer4_flag = 1;
+	if(timerUart_counter > 0){
+		timerUart_counter--;
+		if(timerUart_counter == 0){
+			timerUart_flag = 1;
+		}
+	}
+	if(timerRow_counter > 0){
+		timerRow_counter--;
+		if(timerRow_counter == 0){
+			timerRow_flag = 1;
 		}
 	}
 	if(timer5_counter > 0){
 		timer5_counter--;
 		if(timer5_counter == 0){
 			timer5_flag = 1;
+		}
+	}
+	if(timerBuzzer_counter > 0){
+		timerBuzzer_counter--;
+		if(timerBuzzer_counter == 0){
+			timerBuzzer_flag = 1;
 		}
 	}
 }

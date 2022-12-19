@@ -4,7 +4,14 @@
 //=========================
 //	FOR DISPLAY COLORFUL LEDS
 //=========================
+
+#include "main.h"
+#include "global.h"
+#include "Software_timer.h"
+
 enum TypeLed {Red, Green, Yellow};
+
+void Init();
 void BlinkLed(enum TypeLed);
 
 void Display_Init();

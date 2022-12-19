@@ -9,7 +9,9 @@
 #define INC_FSM_AUTOMATIC_H_
 
 #include "global.h"
-
+#include "main.h"
+#include <stdio.h>
+#include "Display.h"
 void fsm_automatic_run();
 
 #endif /* INC_FSM_AUTOMATIC_H_ */

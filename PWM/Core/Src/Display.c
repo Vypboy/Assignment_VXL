@@ -6,9 +6,14 @@
  */
 
 #include "Display.h"
-#include "main.h"
-#include "global.h"
-#include "Software_timer.h"
+
+
+void Init(){
+	status_col=INIT;
+	status_row=INIT;
+
+	setTimerCol(10);
+}
 
 //ham BkinkLed() de thuc hien nhap nhau 4 den cung mau trong trang thai MODE
 int status1=0;
@@ -72,25 +77,18 @@ void Display_Led_Yellow2(){
 }
 
 
-//void Display_P_Led_Red1(){
-//	HAL_GPIO_WritePin(P_LED1_GPIO_Port, P_LED1_Pin, GPIO_PIN_SET);
-//	HAL_GPIO_WritePin(P_LED2_GPIO_Port, P_LED2_Pin, GPIO_PIN_RESET);
-//}
-//void Display_P_Led_Green1(){
-//	HAL_GPIO_WritePin(P_LED1_GPIO_Port, P_LED1_Pin, GPIO_PIN_RESET);
-//	HAL_GPIO_WritePin(P_LED2_GPIO_Port, P_LED2_Pin, GPIO_PIN_SET);
-//}
-void Display_P_Led_Reset(){
-	HAL_GPIO_WritePin(pled1_GPIO_Port, pled2_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(pled1_GPIO_Port, pled2_Pin, GPIO_PIN_RESET);
-}
 void Display_P_Led_Red1(){
-	HAL_GPIO_WritePin(pled1_GPIO_Port, pled2_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(pled1_GPIO_Port, pled2_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(P_LED1_GPIO_Port, P_LED1_Pin, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(P_LED2_GPIO_Port, P_LED2_Pin, GPIO_PIN_RESET);
 }
 void Display_P_Led_Green1(){
-	HAL_GPIO_WritePin(pled1_GPIO_Port, pled2_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(pled1_GPIO_Port, pled2_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(P_LED1_GPIO_Port, P_LED1_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(P_LED2_GPIO_Port, P_LED2_Pin, GPIO_PIN_SET);
+}
+
+void Display_P_Led_Reset(){
+	HAL_GPIO_WritePin(P_LED1_GPIO_Port, P_LED1_Pin, GPIO_PIN_RESET);
+	HAL_GPIO_WritePin(P_LED2_GPIO_Port, P_LED2_Pin, GPIO_PIN_RESET);
 }
 
 
