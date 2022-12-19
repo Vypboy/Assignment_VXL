@@ -4,8 +4,6 @@
 void press_ped_lag(){
 	flag_pad=1;
 	cycle_pad = 0;
-	setTimerBuzzer(10);
-	setBuzzerLength(10);
 }
 void reset_pad_led(){
 	flag_pad=0;
