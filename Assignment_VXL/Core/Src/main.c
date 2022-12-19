@@ -158,7 +158,7 @@ int main(void)
 	if(timerUart_flag==1){
 		setTimerUart(1000);
 		time_value--;
-		HAL_UART_Transmit(&huart2, (void *)str, sprintf(str,"!7SEG:%2d\n",time_value), 1000);
+		HAL_UART_Transmit(&huart2, (void *)str, sprintf(str,"!7SEG:%2d#\n",time_value/1000), 1000);
 	}
 	if (buzzerActive_flag == 1){
 		Buzzer_Off();
