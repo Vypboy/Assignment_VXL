@@ -1,4 +1,4 @@
-22:40:56 **** Incremental Build of configuration Debug for project Assignment_VXL ****
+22:47:15 **** Incremental Build of configuration Debug for project Assignment_VXL ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/fsm_automatic.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/fsm_automatic.d" -MT"Core/Src/fsm_automatic.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/fsm_automatic.o"
 arm-none-eabi-gcc -o "Assignment_VXL.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\University of Technology\Microcontroller - Microproccesor\Assignment5\Assignment_VXL\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Assignment_VXL.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -7,9 +7,9 @@ Finished building target: Assignment_VXL.elf
 arm-none-eabi-size   Assignment_VXL.elf 
 arm-none-eabi-objdump -h -S  Assignment_VXL.elf  > "Assignment_VXL.list"
 arm-none-eabi-objcopy  -O ihex  Assignment_VXL.elf  "Assignment_VXL.hex"
-   text	   data	    bss	    dec	    hex	filename
-  21288	    132	   2036	  23456	   5ba0	Assignment_VXL.elf
 arm-none-eabi-objcopy  -O binary  Assignment_VXL.elf  "Assignment_VXL.bin"
+   text	   data	    bss	    dec	    hex	filename
+  21300	    132	   2036	  23468	   5bac	Assignment_VXL.elf
 Finished building: default.size.stdout
  
 Finished building: Assignment_VXL.hex
@@ -19,5 +19,5 @@ Finished building: Assignment_VXL.bin
 Finished building: Assignment_VXL.list
  
 
-22:40:56 Build Finished. 0 errors, 0 warnings. (took 697ms)
+22:47:15 Build Finished. 0 errors, 0 warnings. (took 712ms)
 

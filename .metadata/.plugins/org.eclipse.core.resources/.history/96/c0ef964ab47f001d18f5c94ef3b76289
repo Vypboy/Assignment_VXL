@@ -115,8 +115,7 @@ void fsm_automatic_run(){
 			if(timerRow_flag==1){
 				status_row=AUTO_GREEN;
 				setTimerRow(Time_Auto_Green);
-				setTimerBuzzer(10);
-				setBuzzerLength(10);
+
 				//dat gia tri bien dem time_value de hien thi tren terminal
 				set_time_value(Time_Auto_Green);
 			}
@@ -131,7 +130,22 @@ void fsm_automatic_run(){
 					if (buzzerLength_flag == 1){
 						Buzzer(300 - (int)(250 * per));
 					}
+//					float per = (float)(time_value / Time_Auto_Green);
+//					setTimerBuzzer((int)(Time_Auto_Green * per));
+////					Buzzer(200 - (int)(190 * (1 - per)));
+////					Buzzer(200 - 190*time_value / Time_Auto_Green);
+//					Buzzer(200 - x);
+////					Buzzer(100);
 				}
+//				Buzzer(200 - x);
+
+//				if(timer3_flag==1){
+//					setTimer3(1000);
+////					if(time_value>=0) time_value-=1000;
+////					else set_time_value(Time_Auto_Green);
+//					if(x>0) x-= 190/(Time_Auto_Green/1000);
+//					else x=190;
+//				}
 			}
 			Display_Led_Green2();
 

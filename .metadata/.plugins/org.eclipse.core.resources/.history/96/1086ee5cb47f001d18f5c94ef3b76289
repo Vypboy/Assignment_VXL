@@ -115,8 +115,7 @@ void fsm_automatic_run(){
 			if(timerRow_flag==1){
 				status_row=AUTO_GREEN;
 				setTimerRow(Time_Auto_Green);
-				setTimerBuzzer(10);
-				setBuzzerLength(10);
+
 				//dat gia tri bien dem time_value de hien thi tren terminal
 				set_time_value(Time_Auto_Green);
 			}
