@@ -1,7 +1,9 @@
-Software_timer.c:28:6:setTimerBuzzer	16	static
-Software_timer.c:33:6:setTimerCol	16	static
-Software_timer.c:38:6:setTimer2	16	static
-Software_timer.c:43:6:setTimerUart	16	static
-Software_timer.c:48:6:setTimerRow	16	static
-Software_timer.c:53:6:setTimer5	16	static
-Software_timer.c:58:6:timerRun	4	static
+Software_timer.c:36:6:setBuzzerLength	16	static
+Software_timer.c:42:6:setTimerBuzzer	16	static
+Software_timer.c:47:6:setTimerCol	16	static
+Software_timer.c:52:6:setTimer2	16	static
+Software_timer.c:57:6:setTimer3	16	static
+Software_timer.c:62:6:setTimerUart	16	static
+Software_timer.c:67:6:setTimerRow	16	static
+Software_timer.c:72:6:setTimer5	16	static
+Software_timer.c:79:6:timerRun	4	static

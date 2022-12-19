@@ -89,6 +89,11 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 
 void Buzzer(int intensity){
 	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, intensity);
+	setBuzzerLength(200);
+//	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
+}
+
+void Buzzer_Off(){
 	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
 }
 
@@ -135,8 +140,10 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   Init();
 
-
+  setTimerBuzzer(10);
+	setBuzzerLength(10);
   setTimer2(10);
+  setTimer3(10);//for run_time_value
   setTimerUart(10);
   setTimer5(10);
 
@@ -153,7 +160,9 @@ int main(void)
 		time_value--;
 		HAL_UART_Transmit(&huart2, (void *)str, sprintf(str,"!7SEG:%2d\n",time_value), 1000);
 	}
-
+	if (buzzerActive_flag == 1){
+		Buzzer_Off();
+	}
 
     /* USER CODE END WHILE */
 
