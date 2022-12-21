@@ -1,4 +1,4 @@
-"./Core/Src/Display.o"
+"./Core/Src/Device_Functions.o"
 "./Core/Src/Software_timer.o"
 "./Core/Src/button.o"
 "./Core/Src/fsm_automatic.o"

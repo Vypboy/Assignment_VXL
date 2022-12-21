@@ -1,6 +1,5 @@
 Core/Src/modification_mode.o: ../Core/Src/modification_mode.c \
- ../Core/Inc/Display.h ../Core/Inc/modification_mode.h \
- ../Core/Inc/global.h ../Core/Inc/Software_timer.h ../Core/Inc/button.h \
+ ../Core/Inc/modification_mode.h ../Core/Inc/Device_Functions.h \
  ../Core/Inc/main.h ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -26,17 +25,11 @@ Core/Src/modification_mode.o: ../Core/Src/modification_mode.c \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
- ../Core/Inc/button.h
-
-../Core/Inc/Display.h:
+ ../Core/Inc/global.h ../Core/Inc/Software_timer.h ../Core/Inc/button.h
 
 ../Core/Inc/modification_mode.h:
 
-../Core/Inc/global.h:
-
-../Core/Inc/Software_timer.h:
-
-../Core/Inc/button.h:
+../Core/Inc/Device_Functions.h:
 
 ../Core/Inc/main.h:
 
@@ -89,5 +82,9 @@ Core/Src/modification_mode.o: ../Core/Src/modification_mode.c \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h:
 
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
+
+../Core/Inc/global.h:
+
+../Core/Inc/Software_timer.h:
 
 ../Core/Inc/button.h:

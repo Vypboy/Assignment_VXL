@@ -43,8 +43,7 @@ extern TIM_HandleTypeDef htim3;
 
 /* Exported constants --------------------------------------------------------*/
 /* USER CODE BEGIN EC */
-void Buzzer();
-void Buzzer_Off();
+
 /* USER CODE END EC */
 
 /* Exported macro ------------------------------------------------------------*/

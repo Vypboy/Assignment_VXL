@@ -15,6 +15,10 @@ extern int timerUart_flag;
 extern int timerRow_flag;
 extern int timer5_flag;
 extern int timerBuzzer_flag;
+extern int buzzerLength_flag;
+extern int buzzerActive_flag;
+
+void setBuzzerLength(int duration);
 
 void setTimerBuzzer(int duration);
 

@@ -18,6 +18,7 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include <Device_Functions.h>
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -26,7 +27,6 @@
 #include "button.h"
 #include "fsm_automatic.h"
 #include "fsm_manual.h"
-#include "Display.h"
 #include "global.h"
 #include <stdio.h>
 /* USER CODE END Includes */
@@ -73,7 +73,6 @@ uint8_t buffer[MAX_BUFFER_SIZE];
 uint8_t index_buffer = 0;
 uint8_t buffer_flag = 0;
 
-
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 	if(huart->Instance == USART2){
 
@@ -86,15 +85,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 	}
 }
 
-
-void Buzzer(int intensity){
-	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, intensity);
-//	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
-}
-
-void Buzzer_Off(){
-	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
-}
 
 /* USER CODE END 0 */
 
@@ -139,26 +129,19 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   Init();
 
-
+  setTimerBuzzer(10);
+  setBuzzerLength(10);
   setTimer2(10);
   setTimer3(10);//for run_time_value
   setTimerUart(10);
   setTimer5(10);
 
-  char str[20];
-//  int speaker_intensity=0;
-//  set_time_value() duoc dat trong fsm_automatic
+//  char str[20];
   while (1)
   {
 	  fsm_automatic_run();
 	  fsm_manual_run();
-
-	if(timerUart_flag==1){
-		setTimerUart(1000);
-		time_value--;
-		HAL_UART_Transmit(&huart2, (void *)str, sprintf(str,"!7SEG:%2d\n",time_value), 1000);
-	}
-
+	  uart_run();
 
     /* USER CODE END WHILE */
 

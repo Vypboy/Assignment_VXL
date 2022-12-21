@@ -24,7 +24,7 @@
 #define PEDESTRIAN_MODE 15
 
 //thoi gian trang thai mode
-#define MODE_TIME 	15000
+#define MODE_TIME 	10000
 
 extern int status_col;
 extern int status_row;

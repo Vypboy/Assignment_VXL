@@ -8,9 +8,9 @@
 #ifndef INC_MODIFICATION_MODE_H_
 #define INC_MODIFICATION_MODE_H_
 
+#include <Device_Functions.h>
 #include "global.h"
 #include "button.h"
-#include "Display.h"
 
 void modification_mode();
 

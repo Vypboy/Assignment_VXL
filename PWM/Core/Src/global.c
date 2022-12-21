@@ -14,8 +14,8 @@ int flag_pad=0;
 int cycle_pad = 0;
 
 //quan ly thoi gian cac den bang cac bien ben duoi
-int Time_Auto_Red =6000;
-int Time_Auto_Green =5000;
+int Time_Auto_Red =5000;
+int Time_Auto_Green =4000;
 int Time_Auto_Yellow = 1000;
 
 

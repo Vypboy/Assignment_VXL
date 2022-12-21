@@ -1,5 +1,5 @@
-#ifndef INC_DISPLAY_H_
-#define INC_DISPLAY_H_
+#ifndef INC_DEVICE_FUNCTIONS_H_
+#define INC_DEVICE_FUNCTIONS_H_
 
 //=========================
 //	FOR DISPLAY COLORFUL LEDS
@@ -27,6 +27,8 @@ void Display_P_Led_Reset();
 void Display_P_Led_Red1();
 void Display_P_Led_Green1();
 
+void Buzzer();
+void Buzzer_Off();
+void uart_run();
 
-
-#endif /* INC_DISPLAY_H_ */
+#endif /* INC_DEVICE_FUNCTIONS_H_ */

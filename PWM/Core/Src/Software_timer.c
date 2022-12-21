@@ -29,6 +29,16 @@ int timer5_flag = 0;
 int timerBuzzer_counter = 0;
 int timerBuzzer_flag = 0;
 
+int buzzerLength_flag = 0;
+int buzzerLength_counter = 0;
+int buzzerActive_flag = 0;
+
+void setBuzzerLength(int duration){
+	buzzerLength_counter = duration/TICK;
+	buzzerLength_flag = 0;
+	buzzerActive_flag = 0;
+}
+
 void setTimerBuzzer(int duration){
 	timerBuzzer_counter = duration/TICK;
 	timerBuzzer_flag = 0;
@@ -67,6 +77,15 @@ void setTimer5(int duration){
 
 
 void timerRun(){
+	if(buzzerLength_counter > 0){
+		buzzerLength_counter--;
+		if(buzzerLength_counter <= 10){
+			buzzerActive_flag = 1;
+		}
+		if(buzzerLength_counter == 0){
+			buzzerLength_flag = 1;
+		}
+	}
 	if(timerCol_counter > 0){
 		timerCol_counter--;
 		if(timerCol_counter == 0){
@@ -109,5 +128,6 @@ void timerRun(){
 			timerBuzzer_flag = 1;
 		}
 	}
+
 }
 

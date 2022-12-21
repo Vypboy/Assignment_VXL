@@ -8,9 +8,9 @@
 #ifndef INC_FSM_MANUAL_H_
 #define INC_FSM_MANUAL_H_
 
+#include <Device_Functions.h>
 #include "global.h"
 #include "modification_mode.h"
-#include "Display.h"
 #include "global.h"
 
 void fsm_manual_run();

@@ -5,8 +5,8 @@
  *      Author: ADMIN
  */
 
-#include "Display.h"
-
+#include <Device_Functions.h>
+#include <stdio.h>
 
 void Init(){
 	status_col=INIT;
@@ -14,6 +14,9 @@ void Init(){
 
 	setTimerCol(10);
 }
+/////////////////////////////////////////////////////////////////
+//					FUNCTIONS FOR LEDS
+/////////////////////////////////////////////////////////////////
 
 //ham BkinkLed() de thuc hien nhap nhau 4 den cung mau trong trang thai MODE
 int status1=0;
@@ -92,4 +95,27 @@ void Display_P_Led_Reset(){
 }
 
 
+/////////////////////////////////////////////////////////////////
+//					FUNCTIONS FOR BUZZER
+/////////////////////////////////////////////////////////////////
 
+void Buzzer(int intensity){
+	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, intensity);
+	setBuzzerLength(200);
+}
+
+void Buzzer_Off(){
+	__HAL_TIM_SetCompare(&htim3, TIM_CHANNEL_1, 0);
+}
+
+/////////////////////////////////////////////////////////////////
+//					FUNCTIONS FOR UART
+/////////////////////////////////////////////////////////////////
+char str[20];
+void uart_run(){
+	if(timerUart_flag==1){
+		setTimerUart(1000);
+		time_value--;
+		HAL_UART_Transmit(&huart2, (void *)str, sprintf(str,"!7SEG:%2d#\n",time_value/1000), 1000);
+	}
+}
